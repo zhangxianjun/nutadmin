@@ -16,7 +16,7 @@ public class HomeController {
     @RequestMapping("/get/url")
     @ResponseBody
     public String getUrl(@RequestBody Map<String, Object> json) {
-        return "login";
+        return "course";
     }
 
 

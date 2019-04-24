@@ -44,6 +44,7 @@
                 resourceId: resourceId
             }),
             success: function (data) {
+                console.log(data);
                 $("#my-iframe").attr("src", data);
             }
         });
