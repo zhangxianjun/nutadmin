@@ -2,7 +2,9 @@ package group.aliren.nutadmin;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,6 +13,14 @@ import java.util.Map;
 
 @Controller
 public class HomeController {
+    @RequestMapping("/get/url")
+    @ResponseBody
+    public String getUrl(@RequestBody Map<String, Object> json) {
+        return "login";
+    }
+
+
+
     @RequestMapping("/home")
     public String homePage(ModelMap modelMap) {
         // 导航选项
