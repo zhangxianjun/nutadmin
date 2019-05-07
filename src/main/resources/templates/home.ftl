@@ -3,17 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script src="/js/jquery.js"></script>
-    <style>
-        * {
-            margin: 0px;
-            padding: 0px;
-        }
-    </style>
+    <script src="../static/js/jquery.js"></script>
+    <link rel="stylesheet" href="../static/css/main.css">
 </head>
-<body style="position: relative; background-color: aqua; height: 100%;">
-<header style="height: 80px; width: 100%; background-color: gray;">
+<body>
+<header style="height: 62px; width: 100%; background-color: gray;">
     <nav>
+        <img src="../static/image/logo.png" style="width:115px; height: 62px;">
         <#list navList as l>
             <button onclick="openIframe(${l.resourceId})">${l.title}</button>
         </#list>
@@ -28,8 +24,7 @@
     </aside>
 
     <main style="width: calc(100% - 120px); height: 100%; margin-top: 5px;">
-        <iframe src="/profile" style="width: 100%; height: 100%; border: 0px;" id="my-iframe">
-
+        <iframe src="/course" style="width: 100%; height: 100%; border: 0px;" id="my-iframe">
         </iframe>
     </main>
 </div>
