@@ -1,5 +1,5 @@
 * {margin: 0px; padding: 0px; font-size: 14px}
-body {height: 100%; background: chartreuse}
+body {height: 100%; background: white}
 body > header > nav > button.selected {height: 44px; width: 90px; background-color: red; outline: none}
 body > header > nav > button.normal {height: 44px; width: 90px; background-color: greenyellow; outline: none}
 body > footer > aside > button.selected {height: 44px; width: 115px; background-color: red; outline: none}

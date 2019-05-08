@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>${name}, Welcome!</title>
-    <script src="/js/jquery.js"></script>
+    <script src="../static/js/jquery.js"></script>
     <link rel="stylesheet" href="../static/css/main.css">
 </head>
 <body>

@@ -11,11 +11,9 @@
             height: 62px;
             vertical-align: middle
         }
-
-        ;
     </style>
 </head>
-<body>
+<body style="background: lightgray">
 <header style="height: 62px; width: 100%; background-color: gray;">
     <nav>
         <img src="../static/image/logo.png">
@@ -93,7 +91,6 @@
         });
 
     }
-
 
     function openIframe(resourceId, size, url) {
 

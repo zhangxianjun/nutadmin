@@ -6,7 +6,7 @@
     <script src="/js/jquery.js"></script>
         <link rel="stylesheet" href="../static/css/main.css">
 </head>
-<body style="position: relative; background-color: aqua; height: 100%;">
+<body>
 <h1>I'm iframe !</h1>
 </body>
 </html>

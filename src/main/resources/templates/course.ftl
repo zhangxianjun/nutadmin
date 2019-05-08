@@ -13,7 +13,7 @@
         }
     </style>
 </head>
-<body style="background-color: aqua; height: 100%; width: 100%">
+<body>
 <h1 style="margin-left: 20px;">我的课程</h1>
 <table style="width: 80%; height: 500px; margin-left: 20px;" border="1px" cellspacing="0px" cellpadding="0px">
     <thead>
