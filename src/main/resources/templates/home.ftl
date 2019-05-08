@@ -19,10 +19,10 @@
         <img src="../static/image/logo.png">
         <#list navList as l>
             <#if l_index==0>
-                <button id="n${l.resourceId}" onclick="openAsideNavigation(${l.resourceId}, ${navList?size})"
+                <button id="n${l_index}" onclick="openAsideNavigation(${l_index}, ${l.resourceId}, ${navList?size})"
                         class="selected">${l.title}</button>
             <#else>
-                <button id="n${l.resourceId}" onclick="openAsideNavigation(${l.resourceId}, ${navList?size})"
+                <button id="n${l_index}" onclick="openAsideNavigation(${l_index}, ${l.resourceId}, ${navList?size})"
                         class="normal">${l.title}</button>
             </#if>
         </#list>
@@ -33,10 +33,10 @@
     <aside id="asideNavigation" style="background-color: lightgray;  width: 115px; height: 100%; margin-top: 5px">
         <#list asideList as l>
             <#if l_index==0>
-                <button id="a${l.resourceId}" onclick="openIframe(${l.resourceId}, ${asideList?size}, ${l.url})"
+                <button id="a${l_index}" onclick="openIframe(${l_index}, ${l.resourceId}, ${asideList?size}, '${l.url}')"
                         class="selected">${l.title}</button>
             <#else>
-                <button id="a${l.resourceId}" onclick="openIframe(${l.resourceId}, ${asideList?size}, ${l.url})"
+                <button id="a${l_index}" onclick="openIframe(${l_index}, ${l.resourceId}, ${asideList?size}, '${l.url}')"
                         class="normal">${l.title}</button>
             </#if>
         </#list>
@@ -50,10 +50,10 @@
 </body>
 <script>
     // 一级导航栏切换
-    function openAsideNavigation(resourceId, size) {
+    function openAsideNavigation(index, resourceId, size) {
         // 设置颜色
         for (var i = 0; i < size; i++) {
-            if (resourceId == i) {
+            if (index == i) {
                 $("#n" + i).attr("class", "selected");
             } else {
                 $("#n" + i).attr("class", "normal");
@@ -78,11 +78,11 @@
                 for (var i = 0; i < length; i++) {
                     var c = json["data"][i];
                     if (i == 0) {
-                        htmlString = "<button id=\"a" + c.resourceId + "\" onclick=\"openIframe(" + c.resourceId + ", " + length + ", \'" + c.url + "\')\"\n" +
+                        htmlString = "<button id=\"a" + i + "\" onclick=\"openIframe(" + i + ", " + c.resourceId + ", " + length + ", \'" + c.url + "\')\"\n" +
                             "                        class=\"selected\">" + c.title + "</button>";
                         $("#my-iframe").attr("src", c.url);
                     } else {
-                        htmlString += "<button id=\"a" + c.resourceId + "\" onclick=\"openIframe(" + c.resourceId + ", " + length + ", \'" + c.url + "\')\"\n" +
+                        htmlString += "<button id=\"a" + i + "\" onclick=\"openIframe(" + i + ", " + c.resourceId + ", " + length + ", \'" + c.url + "\')\"\n" +
                             "                        class=\"normal\">" + c.title + "</button>";
                     }
                 }
@@ -92,10 +92,10 @@
 
     }
 
-    function openIframe(resourceId, size, url) {
+    function openIframe(index, resourceId, size, url) {
 
         for (var i = 0; i < size; i++) {
-            if (resourceId == i) {
+            if (index == i) {
                 $("#a" + i).attr("class", "selected");
                 console.log(i + "select" + i);
             } else {

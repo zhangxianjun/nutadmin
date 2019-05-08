@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script src="/js/jquery.js"></script>
-    <script src="/js/layer.js"></script>
+    <script src="../static/js/jquery.js"></script>
+<#--    <script src="../static/js/layer.js"></script>-->
         <link rel="stylesheet" href="../static/css/main.css">
     <style>
         * {
@@ -35,9 +35,9 @@
             <#list l as v>
             <#--                一天的同一个时间段-->
                 <#if v["class"] =='0'>
-                    <td onclick="addCourse(${v['key']})">新增</td>
+                    <td><a href="/course/detail?lessonId=${v['key']}">添加任务</a></td>
                 <#else>
-                    <td>${v["class"]}</td>
+                    <td onclick="addCourse(${v['key']})">${v["class"]}</td>
                 </#if>
             </#list>
         </tr>
@@ -46,7 +46,7 @@
 </body>
 <script>
 function addCourse(lessonId) {
-    alert("=============" + lessonId);
+    // $()
 }
 
 function showDetail() {

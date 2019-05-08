@@ -95,10 +95,10 @@ public class CourseController {
     }
 
 
-    @RequestMapping("/course/add")
-    public String addCourse(@RequestBody String json) {
+    @RequestMapping("/course/detail")
+    public String addCourse() {
         // 时段ID 用户ID 授课形式 年级 学生名字
-        return "";
+        return "course_detail";
     }
 
 
