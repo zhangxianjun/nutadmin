@@ -35,9 +35,9 @@
             <#list l as v>
             <#--                一天的同一个时间段-->
                 <#if v["class"] =='0'>
-                    <td><a href="/course/detail?lessonId=${v['key']}">添加任务</a></td>
+                    <td class="detail" id="0"><a href="/course/detail?lessonId=${v['key']}">添加任务</a></td>
                 <#else>
-                    <td onclick="addCourse(${v['key']})">${v["class"]}</td>
+                    <td class="detail" id="0" onclick="addCourse(${v['key']})">${v["class"]}</td>
                 </#if>
             </#list>
         </tr>

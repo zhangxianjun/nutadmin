@@ -17,11 +17,11 @@
         <label style="margin-left: 40px">密码：</label>
         <input type="password" name="password">
     </div>
-        <div style="margin-top: 10px; display: flex; height: 30px; width: 100%">
-            <label style="margin-left: 24px"">验证码：</label>
-            <input type="text" style="width: 60px; margin-left: 5px">
-            <img src="/image/logo.png" style="margin-left: 5px; width: 60px; height: 30px">
-        </div>
+    <div style="margin-top: 10px; display: flex; height: 30px; width: 100%">
+        <label style="margin-left: 24px"">验证码：</label>
+        <input type="text" style="width: 60px; margin-left: 5px">
+        <img src="/image/logo.png" style="margin-left: 5px; width: 60px; height: 30px">
+    </div>
 
     <button style="display: block; margin: 12px auto; width: 80px; height: 30px">登录</button>
 </div>
@@ -35,7 +35,7 @@
             type: 'POST',
             contentType: "application/json; charset=UTF-8",
             url: '/login/login',
-            data:JSON.stringify({
+            data: JSON.stringify({
                 name: "菜鸟教程",
                 url: "http://www.runoob.com"
             }),

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -96,11 +97,15 @@ public class CourseController {
 
 
     @RequestMapping("/course/detail")
-    public String addCourse() {
+    public String addCourse(@RequestParam("lessonId") String lessonId, ModelMap modelMap) {
         // 时段ID 用户ID 授课形式 年级 学生名字
+        modelMap.put("lessonId", lessonId);
         return "course_detail";
     }
 
-
+    @RequestMapping("/course/save")
+    public String saveCourse() {
+        return "";
+    }
 
 }

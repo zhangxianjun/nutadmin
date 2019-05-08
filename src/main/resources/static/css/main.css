@@ -5,4 +5,6 @@ body > header > nav > button.normal {height: 44px; width: 90px; background-color
 body > footer > aside > button.selected {height: 44px; width: 115px; background-color: red; outline: none}
 body > footer > aside > button.normal {height: 44px; width: 115px; background-color: greenyellow; outline: none}
 image {vertical-align: center}
-table {}
+table {border-collapse: collapse; border-spacing: 0px; border: 1px;}
+table > tr {min-height: 60px}
+table > tr > td {min-width: 160px}
