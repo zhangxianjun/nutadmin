@@ -1,5 +1,6 @@
-package group.aliren.nutadmin;
+package group.aliren.nutadmin.controller.teaching;
 
+import com.alibaba.fastjson.JSONObject;
 import group.aliren.nutadmin.entity.CourseEntity;
 import group.aliren.nutadmin.mapper.CourseMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -104,8 +106,22 @@ public class CourseController {
     }
 
     @RequestMapping("/course/save")
-    public String saveCourse() {
-        return "";
+    @ResponseBody
+    public String saveCourse(@RequestBody String json) {
+        JSONObject jsonObject = JSONObject.parseObject(json);
+        Long lessonId = jsonObject.getLong("lessonId");
+        Long type = jsonObject.getLong("form");
+        Long grade = jsonObject.getLong("grade");
+        String students = jsonObject.getString("students");
+        // 查找出ID, 是否存在ID做是否添加 和 修改
+        CourseEntity ce = courseMapper.findByUserIdAndLessonId(1, lessonId);
+        if (ce != null) {
+            // 修改课程
+        } else {
+            // 新加课程
+            courseMapper.add(lessonId, type, grade,1, students);
+        }
+        return json;
     }
 
 }

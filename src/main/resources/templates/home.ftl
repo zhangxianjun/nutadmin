@@ -20,10 +20,10 @@
         <#list navList as l>
             <#if l_index==0>
                 <button id="n${l_index}" onclick="openAsideNavigation(${l_index}, ${l.resourceId}, ${navList?size})"
-                        class="selected">${l.title}</button>
+                        class="selected">${l.name}</button>
             <#else>
                 <button id="n${l_index}" onclick="openAsideNavigation(${l_index}, ${l.resourceId}, ${navList?size})"
-                        class="normal">${l.title}</button>
+                        class="normal">${l.name}</button>
             </#if>
         </#list>
     </nav>
@@ -34,10 +34,10 @@
         <#list asideList as l>
             <#if l_index==0>
                 <button id="a${l_index}" onclick="openIframe(${l_index}, ${l.resourceId}, ${asideList?size}, '${l.url}')"
-                        class="selected">${l.title}</button>
+                        class="selected">${l.name}</button>
             <#else>
                 <button id="a${l_index}" onclick="openIframe(${l_index}, ${l.resourceId}, ${asideList?size}, '${l.url}')"
-                        class="normal">${l.title}</button>
+                        class="normal">${l.name}</button>
             </#if>
         </#list>
     </aside>
@@ -79,11 +79,11 @@
                     var c = json["data"][i];
                     if (i == 0) {
                         htmlString = "<button id=\"a" + i + "\" onclick=\"openIframe(" + i + ", " + c.resourceId + ", " + length + ", \'" + c.url + "\')\"\n" +
-                            "                        class=\"selected\">" + c.title + "</button>";
+                            "                        class=\"selected\">" + c.name + "</button>";
                         $("#my-iframe").attr("src", c.url);
                     } else {
                         htmlString += "<button id=\"a" + i + "\" onclick=\"openIframe(" + i + ", " + c.resourceId + ", " + length + ", \'" + c.url + "\')\"\n" +
-                            "                        class=\"normal\">" + c.title + "</button>";
+                            "                        class=\"normal\">" + c.name + "</button>";
                     }
                 }
                 $("#asideNavigation").append(htmlString);
