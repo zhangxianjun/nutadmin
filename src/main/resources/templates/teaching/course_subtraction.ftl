@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../static/css/main.css">
 </head>
 <body>
-<h1 style="margin-left: 10px; font-size: 16px">课程详情</h1>
+<h1 style="margin-left: 10px; font-size: 16px">确认消课</h1>
 <table style="margin-left: 10px;">
     <tr>
         <td>时段ID</td>

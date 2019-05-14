@@ -62,7 +62,7 @@ public class CourseController {
             lessonList.add(dayList);
         }
         modelMap.put("list", lessonList);
-        return "course";
+        return "/teaching/course";
     }
 
     private String getTitle(int type) {
@@ -102,7 +102,7 @@ public class CourseController {
     public String addCourse(@RequestParam("lessonId") String lessonId, ModelMap modelMap) {
         // 时段ID 用户ID 授课形式 年级 学生名字
         modelMap.put("lessonId", lessonId);
-        return "course_detail";
+        return "teaching/course_detail";
     }
 
     @RequestMapping("/course/save")

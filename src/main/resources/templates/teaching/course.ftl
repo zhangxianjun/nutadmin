@@ -37,7 +37,7 @@
                 <#if v["class"] =='0'>
                     <td class="detail" id="0"><a href="/course/detail?lessonId=${v['key']}">添加任务</a></td>
                 <#else>
-                    <td class="detail" id="0" onclick="addCourse(${v['key']})">${v["class"]}</td>
+                    <td class="detail" id="0" onclick="addCourse(${v['key']})">${v["class"]}<a>销课</a></td>
                 </#if>
             </#list>
         </tr>
