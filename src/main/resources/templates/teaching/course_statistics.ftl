@@ -8,18 +8,16 @@
     <link rel="stylesheet" href="../../static/css/main.css">
 </head>
 <body>
-<h1 style="margin-left: 20px;">工作计划</h1>
+<h1 style="margin-left: 20px;">最近60天上课记录</h1>
 <table style="width: 80%; height: 500px; margin-left: 20px;" border="1px" cellspacing="0px" cellpadding="0px">
     <thead>
     <tr style="text-align: center">
-        <td>时段</td>
-        <td>星期一</td>
-        <td>星期二</td>
-        <td>星期三</td>
-        <td>星期四</td>
-        <td>星期五</td>
-        <td>星期六</td>
-        <td>星期天</td>
+        <td>序号</td>
+        <td>学生名字</td>
+        <td>年级</td>
+        <td>课程形式</td>
+        <td>课段</td>
+        <td>上课时间</td>
     </tr>
     </thead>
     <#list list as l>

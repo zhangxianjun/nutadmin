@@ -1,8 +1,11 @@
 package group.aliren.nutadmin.controller.teaching;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import group.aliren.nutadmin.entity.CourseEntity;
 import group.aliren.nutadmin.mapper.CourseMapper;
+import group.aliren.nutadmin.mapper.StudentMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -25,38 +28,43 @@ public class CourseController {
     @Autowired
     public CourseMapper courseMapper;
 
+    @Autowired
+    public StudentMapper studentMapper;
+
     @RequestMapping("/course")
     public String coursePage(ModelMap modelMap) {
-        // 从数据库读取出设置的课程
+        // 从数据库读取出计划的任务
         List<CourseEntity> csList = courseMapper.listById(1);
 
+        // 把计划任务存到Map中
         Map<String, CourseEntity> courseMap = new HashMap<>();
 
         for (CourseEntity cs : csList) {
             courseMap.put(cs.lessonId + "", cs);
         }
 
-        // 列表
-        List<List<Map<String, Object>>> lessonList = new ArrayList<>();
+        // 拼接数据
+        List<List<CourseEntity>> lessonList = new ArrayList<>();
+
         for (int j = 1; j <= LESSON; j++) {
-            List<Map<String, Object>> dayList = new ArrayList<>();
+            List<CourseEntity> dayList = new ArrayList<>();
             for (int i = 1; i <= DAY; i++) {
                 String k = j + "" + i;
-                Map<String, Object> m = new HashMap<>();
                 CourseEntity cs = courseMap.get(k);
                 if (cs != null && !cs.students.equals("")) {
-                    m.put("key", k);
-                    String t = getTitle(cs.type);
-                    if (cs.students.split("，").length > 1) {
-                        m.put("class", t + "小班");
+                    JSONArray ja = JSON.parseArray(cs.students);
+                    if (ja.size() > 1) {
+                        cs.students = "小班";
                     } else {
-                        m.put("class", t + cs.students);
+                        JSONObject jo = ja.getJSONObject(0);
+                        cs.students = jo.getString("name");
                     }
-                    dayList.add(m);
+                    dayList.add(cs);
                 } else {
-                    m.put("key", k);
-                    m.put("class", "0");
-                    dayList.add(m);
+                    CourseEntity tmp = new CourseEntity();
+                    tmp.students = "";
+                    tmp.lessonId = Integer.valueOf(k);
+                    dayList.add(tmp);
                 }
             }
             lessonList.add(dayList);
@@ -65,43 +73,17 @@ public class CourseController {
         return "/teaching/course";
     }
 
-    private String getTitle(int type) {
-        String t = "";
-
-        switch (type) {
-            case 0 : {
-                t = "小学";
-                break;
-            }
-
-            case 1 : {
-                t = "初一";
-                break;
-            }
-
-
-            case 2 : {
-                t = "初二";
-                break;
-            }
-
-            case 3 : {
-                t = "初三";
-                break;
-            }
-
-            default: {
-
-            }
-        }
-        return t;
-    }
-
-
     @RequestMapping("/course/detail")
-    public String addCourse(@RequestParam("lessonId") String lessonId, ModelMap modelMap) {
+    public String addCourse(@RequestParam("lessonId") Integer lessonId, ModelMap modelMap) {
         // 时段ID 用户ID 授课形式 年级 学生名字
-        modelMap.put("lessonId", lessonId);
+        CourseEntity ce = courseMapper.findById(lessonId, 1);
+        if (ce == null) {
+            ce = new CourseEntity();
+            ce.lessonId = lessonId;
+            ce.grade = 0;
+            ce.students = "";
+        }
+        modelMap.put("model", ce);
         return "teaching/course_detail";
     }
 
@@ -110,16 +92,16 @@ public class CourseController {
     public String saveCourse(@RequestBody String json) {
         JSONObject jsonObject = JSONObject.parseObject(json);
         Long lessonId = jsonObject.getLong("lessonId");
-        Long type = jsonObject.getLong("form");
         Long grade = jsonObject.getLong("grade");
         String students = jsonObject.getString("students");
         // 查找出ID, 是否存在ID做是否添加 和 修改
         CourseEntity ce = courseMapper.findByUserIdAndLessonId(1, lessonId);
         if (ce != null) {
             // 修改课程
+            courseMapper.save(ce.lessonId, grade, 1, ce.students);
         } else {
             // 新加课程
-            courseMapper.add(lessonId, type, grade,1, students);
+            courseMapper.add(lessonId, grade,1, students);
         }
         return json;
     }

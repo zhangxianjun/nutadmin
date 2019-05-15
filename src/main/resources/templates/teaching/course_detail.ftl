@@ -12,27 +12,40 @@
 <table style="margin-left: 10px;">
     <tr>
         <td>时段ID</td>
-        <td><label id="lessonId">${lessonId}</label></td>
-    </tr>
-    <tr>
-        <td>授课形式</td>
-        <td>
-            <label>小班：</label><input type="radio" name="form" value="0" checked="checked"/>
-            <label>一对一：</label><input type="radio" name="form" value="1"/>
-        </td>
+        <td><label id="lessonId">${model.lessonId}</label></td>
     </tr>
     <tr>
         <td>学生年级</td>
         <td>
-            <label>小学：</label><input type="radio" name="grade" value="0" checked="checked"/>
-            <label>初一：</label><input type="radio" name="grade" value="1"/>
-            <label>初二：</label><input type="radio" name="grade" value="2"/>
-            <label>初三：</label><input type="radio" name="grade" value="3"/>
+            <#if model.grade == 0>
+                <label>小学：</label><input type="radio" name="grade" value="0" checked="checked"/><br/>
+            <#else>
+                <label>小学：</label><input type="radio" name="grade" value="0"/><br/>
+            </#if>
+            <#if model.grade == 1>
+                <label>初一：</label><input type="radio" name="grade" value="1" checked="checked"/><br/>
+            <#else>
+                <label>初一：</label><input type="radio" name="grade" value="1"/><br/>
+            </#if>
+            <#if model.grade == 2>
+                <label>初二：</label><input type="radio" name="grade" value="2" checked="checked"/><br/>
+            <#else>
+                <label>初二：</label><input type="radio" name="grade" value="2"/><br/>
+            </#if>
+            <#if model.grade == 3>
+                <label>初三：</label><input type="radio" name="grade" value="3" checked="checked"/><br/>
+            <#else>
+                <label>初三：</label><input type="radio" name="grade" value="3"/><br/>
+            </#if>
         </td>
     </tr>
     <tr>
         <td>学生名字</td>
         <td>
+            <#assign list = "${model.students}"?eval>
+            <#list list as m>
+                <button>${m.name}</button>
+            </#list>
             <button>添加学生</button>
         </td>
     </tr>
@@ -64,7 +77,5 @@
             }
         })
     });
-
-
 </script>
 </html>
