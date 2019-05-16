@@ -23,13 +23,22 @@ public class StudentController {
         return "/operation/student_list";
     }
 
-    @RequestMapping("contact/add")
-    public String addContact(ModelMap modelMap, @RequestParam("studentId") Integer studentId) {
-        if (studentId == 0) {
+    @RequestMapping("contact/page")
+    public String getContactPage(ModelMap modelMap, @RequestParam("studentId") Integer studentId) {
 
+        StudentEntity se = new StudentEntity();
+        if (studentId == null || studentId == 0) {
+            se.studentId = 0;
+            se.name = "";
+            se.mobile = "";
+            se.mobileOwner = 0;
+            se.state = 0;
         } else {
-
+            // 修改
+            se = studentMapper.getStudentById(studentId);
         }
+
+        modelMap.put("model", se);
         return "operation/student_detail";
     }
 }

@@ -18,6 +18,6 @@ public interface StudentMapper {
     @Select("SELECT * FROM student WHERE state = #{state}")
     List<StudentEntity> listByState(int state);
 
-//    @Select("SELECT * FROM student WHERE  = #{state}")
-//    List<StudentEntity> listByState(int state);
+    @Select("SELECT * FROM student WHERE student_id = #{student_id}")
+    StudentEntity getStudentById(@Param("student_id") int studentId);
 }

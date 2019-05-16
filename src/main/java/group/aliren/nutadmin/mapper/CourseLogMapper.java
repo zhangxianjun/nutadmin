@@ -1,4 +1,8 @@
 package group.aliren.nutadmin.mapper;
 
-public class CourseLogMapper {
+import org.apache.ibatis.annotations.Mapper;
+
+@Mapper
+public interface CourseLogMapper {
+
 }
