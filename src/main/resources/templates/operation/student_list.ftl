@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script src="./js/jquery.js"></script>
+    <script src="./js/jquery-3.4.1.min.js"></script>
     <link rel="stylesheet" href=".static/css/main.css">
     <style>
         * {
