@@ -18,7 +18,7 @@
         <input type="password" name="password">
     </div>
     <div style="margin-top: 10px; display: flex; height: 30px; width: 100%">
-        <label style="margin-left: 24px"">验证码：</label>
+        <label style="margin-left: 24px">验证码：</label>
         <input type="text" style="width: 60px; margin-left: 5px">
         <img src="../static/image/logo.png" style="margin-left: 5px; width: 60px; height: 30px">
     </div>
