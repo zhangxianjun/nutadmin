@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script src="../../static/js/jquery.js"></script>
-    <#--    <script src="../static/js/layer.js"></script>-->
-    <link rel="stylesheet" href="../../static/css/main.css">
+    <script src="./js/jquery.js"></script>
+    <link rel="stylesheet" href="./css/main.css">
 </head>
 <body>
 <h1 style="margin-left: 10px; font-size: 16px">学生资料</h1>

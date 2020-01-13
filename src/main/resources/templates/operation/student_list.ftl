@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script src="../../static/js/jquery.js"></script>
-    <#--    <script src="../static/js/layer.js"></script>-->
-    <link rel="stylesheet" href="../../static/css/main.css">
+    <script src="./js/jquery.js"></script>
+    <link rel="stylesheet" href=".static/css/main.css">
     <style>
         * {
             margin: 0px;

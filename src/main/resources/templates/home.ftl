@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script src="../static/js/jquery.js"></script>
-    <link rel="stylesheet" href="../static/css/main.css">
+    <script src="./js/jquery.js"></script>
+    <link rel="stylesheet" href="./css/main.css">
 </head>
 <body>
 <header class="admin-layout-header">
