@@ -2,52 +2,78 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>${name}, Welcome!</title>
+    <title>教学管理系统</title>
     <script src="./js/jquery-3.4.1.min.js"></script>
-    <link rel="stylesheet" href="./css/main.css">
+    <script src="./css/bootstrap/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="./css/bootstrap/bootstrap.min.css">
+    <style>
+        .login-content {
+            position:absolute;
+            top:50%;
+            left:50%;
+            margin-top: -100px;
+            margin-left: -150px;
+            width: 300px;
+            height: 200px;
+            background-color: lightgray;
+            border-radius: 5px;
+        }
+
+        .login-content-mobile-container {
+            padding-top: 32px;
+        }
+
+        .login-content-password-container {
+            margin-top: 16px;
+        }
+
+        label {
+            margin-left: 36px;
+        }
+
+        button {
+            display: block;
+            margin: 24px auto 0px;
+            width: 118px;
+        }
+    </style>
 </head>
 <body>
 
-<div style="margin-left:auto; margin-right:auto; margin-top:240px; width:260px; height:160px;  background:lightgray">
-    <div style="margin-top: 20px; display: inline-block;">
-        <label style="margin-left: 40px">账号：</label>
-        <input type="text" name="account">
-    </div>
-    <div style="margin-top: 10px; display: inline-block;">
-        <label style="margin-left: 40px">密码：</label>
-        <input type="password" name="password">
-    </div>
-    <div style="margin-top: 10px; display: flex; height: 30px; width: 100%">
-        <label style="margin-left: 24px">验证码：</label>
-        <input type="text" style="width: 60px; margin-left: 5px">
-        <img src="./image/logo.png" style="margin-left: 5px; width: 60px; height: 30px">
+<div class="login-content">
+
+    <div class="login-content-mobile-container">
+        <label>账号：</label>
+        <input type="text" id="mobile">
     </div>
 
-    <button style="display: block; margin: 12px auto; width: 80px; height: 30px">登录</button>
+    <div class="login-content-password-container">
+        <label>密码：</label>
+        <input type="password" id="password">
+    </div>
+
+    <button>登录</button>
 </div>
 </body>
 
 <script>
-    // function login() {
-    //
     $("button").click(function () {
         $.ajax({
             type: 'POST',
             contentType: "application/json; charset=UTF-8",
-            url: '/login/login',
+            url: '/ajax/login',
             data: JSON.stringify({
-                name: "菜鸟教程",
-                url: "http://www.runoob.com"
+                mobile: $("#mobile").val(),
+                password: $("#password").val()
             }),
             success: function (data) {
                 var j = JSON.parse(data);
-                if (j["code"] == 1) {
+                if (j["code"] == 10001) {
                     window.location.href = '/home'
                 }
             }
         });
     });
-    // }
 </script>
 
 </html>
