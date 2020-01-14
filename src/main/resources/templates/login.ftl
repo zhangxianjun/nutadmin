@@ -68,8 +68,17 @@
             }),
             success: function (data) {
                 var j = JSON.parse(data);
+
                 if (j["code"] == 10001) {
-                    window.location.href = '/home'
+                    var d = j["data"];
+                    var name = d["name"];
+                    var t_id = d["t_id"];
+
+                    document.cookie = "name=" + name;
+                    document.cookie = "t_id=" + t_id;
+                    window.location.href = '/home';
+                } else {
+                    console.log("登录失败！");
                 }
             }
         });

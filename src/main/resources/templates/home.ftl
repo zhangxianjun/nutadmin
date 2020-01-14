@@ -8,7 +8,7 @@
 </head>
 <body>
 <header class="admin-layout-header">
-    <label class="admin-logo">YY管理后台</label>
+    <label class="admin-logo">教学系统</label>
     <#list navList as l>
         <#assign headerIndex="${headerIndex}"?eval>
         <#if l_index==headerIndex>

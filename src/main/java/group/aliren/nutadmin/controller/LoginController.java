@@ -1,5 +1,6 @@
 package group.aliren.nutadmin.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import group.aliren.nutadmin.entity.UserEntity;
 import group.aliren.nutadmin.kit.CryptoKit;
 import group.aliren.nutadmin.mapper.StudentMapper;
@@ -49,15 +50,21 @@ public class LoginController {
         // 生成t_id
         String tId = IdUtil.generateTId(mobile, password);
 
-        userMapper.updateTId(mobile, password, tId);
+        userMapper.updateTIdByUserId(tId, ue.userId);
 
         // 返回t_id、用户名字
-        Cookie tCookie = new Cookie("t_id", tId);
-        Cookie nameCookie = new Cookie("name", ue.name);
 
-        response.addCookie(tCookie);
-        response.addCookie(nameCookie);
+        JSONObject resp = new JSONObject();
 
-        return "{\"code\": 10001, \"msg\":\"登录成功!\"}";
+        resp.put("code", 10001);
+        resp.put("msg", "登录成功!");
+
+        JSONObject data = new JSONObject();
+        data.put("t_id", tId);
+        data.put("name", ue.name);
+
+        resp.put("data", data);
+
+        return resp.toJSONString();
     }
 }
