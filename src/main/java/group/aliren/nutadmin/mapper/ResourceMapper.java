@@ -9,6 +9,6 @@ import java.util.List;
 
 @Mapper
 public interface ResourceMapper {
-    @Select("SELECT * FROM resource WHERE catalog_id = #{catalogId}")
+    @Select("SELECT * FROM resource WHERE catalog_id = #{catalogId} ORDER BY sort_id")
     List<ResourceEntity> listByCatalogId(@Param("catalogId") int catalogId);
 }
