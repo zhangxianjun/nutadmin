@@ -9,7 +9,7 @@ import java.util.Date;
  *
  * @author: zxj
  * @date: 2020/1/13 16:47
- * Description: .
+ * Description: 用户表实体.
  */
 
 @Data
@@ -23,5 +23,6 @@ public class UserEntity {
     public String name;
     public String password;
 
-    public Date logDateTime;
+    public int disable;
+    public Date logDatetime;
 }

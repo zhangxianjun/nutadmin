@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Arrays;
 import java.util.Map;
 
 @Controller
@@ -28,6 +29,13 @@ public class LoginController {
 //        modelMap.addAttribute("name", "zxj");
 //        Cookie c = new Cookie("zxj", "MD5");
 //        response.addCookie(c);
+
+        double x = 1.0 / 10;
+        double y = 1 - 9.0 / 10;
+        // 观察x和y是否相等:
+        System.out.println(x);
+        System.out.println(y);
+        System.out.println(1.1-0.9);
         return "login";
     }
 

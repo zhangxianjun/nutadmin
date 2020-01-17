@@ -5,7 +5,9 @@ import lombok.Data;
 @Data
 public class ResourceEntity {
     public int resourceId;
-    public String name;
     public int catalogId;
+    public int sortId;
+
+    public String name;
     public String url;
 }
