@@ -32,10 +32,18 @@ image {vertical-align: center}
     left: 0;
     top: 0;
     width: 150px;
+    text-align: center;
+    color: #3A3D49;
+    display: inline-block;
+}
+
+.admin-logo label {
+    left: 0;
+    top: 0;
+    width: 150px;
     line-height: 56px;
     text-align: center;
-    color: #009699;
-    font-size: 20px;
+    font-size: 18px;
     display: inline-block;
 }
 

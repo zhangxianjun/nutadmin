@@ -7,6 +7,7 @@ import group.aliren.nutadmin.mapper.StudentMapper;
 import group.aliren.nutadmin.mapper.UserMapper;
 import group.aliren.nutadmin.util.IdUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
+import java.awt.image.BufferedImage;
 import java.util.Arrays;
 import java.util.Map;
 
@@ -74,5 +76,14 @@ public class LoginController {
         resp.put("data", data);
 
         return resp.toJSONString();
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/ajax/avatar", produces = MediaType.IMAGE_PNG_VALUE)
+    public BufferedImage getAvatar() {
+
+
+
+        return null;
     }
 }
