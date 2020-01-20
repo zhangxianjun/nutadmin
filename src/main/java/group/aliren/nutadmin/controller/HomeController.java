@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
+import java.util.Map;
 
 
 @Controller
@@ -82,5 +83,16 @@ public class HomeController {
         return "home";
     }
 
+    @RequestMapping("/ajax/home/level")
+    @ResponseBody
+    public String getLevel(@RequestBody Map<String, Object> json) {
+
+        Integer catalogId = (Integer) json.get("catalogId");
+
+        // 获取导航列表
+        List<ResourceEntity> aList = resourceMapper.listByCatalogId(catalogId);
+
+        return JSONObject.toJSONString(aList);
+    }
 
 }

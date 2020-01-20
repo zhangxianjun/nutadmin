@@ -1,0 +1,9 @@
+/*主窗口标题*/
+.container-main-header { height: 43px; border-bottom: 1px solid #f6f6f6; }
+.container-main-header label { line-height: 43px; margin-left: 15px;}
+
+/*主窗口标题*/
+.container-main-header-button { padding: 10px 15px; height: 43px; border-bottom: 1px solid #f6f6f6; height: auto}
+
+/*主窗口表格*/
+.container-main-table { margin: 10px 15px;}
