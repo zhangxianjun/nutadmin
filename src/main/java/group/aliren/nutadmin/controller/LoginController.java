@@ -27,7 +27,7 @@ public class LoginController {
 
 
     @RequestMapping(value = {"/", "/login"})
-    public String loginPage() {
+    public String loginPage(HttpServletResponse response) {
 //        modelMap.addAttribute("name", "zxj");
 //        Cookie c = new Cookie("zxj", "MD5");
 //        response.addCookie(c);
@@ -38,6 +38,11 @@ public class LoginController {
         System.out.println(x);
         System.out.println(y);
         System.out.println(1.1-0.9);
+
+//        </styles.css>; rel=preload; as=style
+
+        response.setHeader("Link", "</css/bootstrap/bootstrap.min.css>; rel=preload; as=style");
+
         return "login";
     }
 
@@ -45,22 +50,22 @@ public class LoginController {
     @RequestMapping("/ajax/login")
     public String login(@RequestBody Map<String, Object> json, HttpServletResponse response) {
         // 鉴定数据
-        String mobile = String.valueOf(json.get("mobile"));
-        String password = String.valueOf(json.get("password"));
+//        String mobile = String.valueOf(json.get("mobile"));
+//        String password = String.valueOf(json.get("password"));
+//
+//        String md5Password = CryptoKit.enMd5(password);
 
-        String md5Password = CryptoKit.enMd5(password);
-
-        // 查询到用户
-        UserEntity ue = userMapper.getUserByMobileAndPassword(mobile, md5Password);
-
-        if (ue.userId <= 0) {
-            return "{\"code\": 10000, \"msg\":\"未知身份!\"}";
-        }
-
-        // 生成t_id
-        String tId = IdUtil.generateTId(mobile, password);
-
-        userMapper.updateTIdByUserId(tId, ue.userId);
+//        // 查询到用户
+//        UserEntity ue = userMapper.getUserByMobileAndPassword(mobile, md5Password);
+//
+//        if (ue != null) {
+//            return "{\"code\": 10000, \"msg\":\"未知身份!\"}";
+//        }
+//
+//        // 生成t_id
+//        String tId = IdUtil.generateTId(mobile, password);
+//
+//        userMapper.updateTIdByUserId(tId, ue.userId);
 
         // 返回t_id、用户名字
 
@@ -70,8 +75,8 @@ public class LoginController {
         resp.put("msg", "登录成功!");
 
         JSONObject data = new JSONObject();
-        data.put("t_id", tId);
-        data.put("name", ue.name);
+        data.put("t_id", "id");
+        data.put("name", "name");
 
         resp.put("data", data);
 

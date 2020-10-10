@@ -8,6 +8,9 @@
 </head>
 <body>
 <h1 style="margin-left: 20px;">工作计划</h1>
+<form>
+    <input name="testDatetime" value="${testDatetime?string("yyyy-MM-dd HH:mm:ss")}">
+</form>
 <table style="width: 80%; height: 500px; margin-left: 20px;" border="1px" cellspacing="0px" cellpadding="0px">
     <thead>
     <tr style="text-align: center">

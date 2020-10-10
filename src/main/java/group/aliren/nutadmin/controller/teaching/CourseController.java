@@ -14,10 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Controller
 public class CourseController {
@@ -70,6 +67,9 @@ public class CourseController {
             lessonList.add(dayList);
         }
         modelMap.put("list", lessonList);
+
+        modelMap.put("testDatetime", new Date());
+
         return "/teaching/course";
     }
 
