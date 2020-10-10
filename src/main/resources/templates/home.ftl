@@ -4,211 +4,134 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <script src="./js/jquery-3.4.1.min.js"></script>
+    <script src="/js/vue.js"></script>
+    <link rel="stylesheet" href="/element/element.css">
+    <script src="/element/element.js"></script>
     <style>
-        * { margin: 0px; padding: 0px; font-size: 16px; }
-        body { height: 100%; }
-
-        .browser { display: flex; width: 100%; height: 100%; }
-
-        .browser-left { width: 228px; height: 100%; }
-
-        .browser-left-logo {
-            width: 100%;
-            height: 49px;
-            background-color: #393D49;
-            text-align: center;
+        .el-header {
+            font-size: 12px;
+            background-color: #eee;
+            color: #333;
         }
 
-        .browser-left-logo label {
-            line-height: 49px;
-            font-size: 18px;
-            color: white;
-        }
-
-        .browser-left-navigation {
-            height: calc(100% - 49px);
-            background-color: #20222A;
-        }
-
-        .browser-left-navigation-header {
-            width: 100%;
-            height: 56px;
-            background-color: #24262F;
-        }
-
-        .browser-left-navigation-header img {
-            width: 14px;
-            height: 14px;
-            margin-left: 20px;
-            vertical-align: middle;
-            background-color: #218838;
-        }
-
-        .browser-left-navigation-header label {
-            line-height: 56px;
-            margin-left: 10px;
-            vertical-align: middle;
-            color: white;
-        }
-
-        .browser-left-navigation-list {
-            display: none;
-            margin-top: 2px;
-            margin-bottom: 2px;
-            background-color: #191B21;
-        }
-
-        .browser-left-navigation-list dl {
-            width: 100%;
-            height: 40px;
-            background-color: #191B21;
-        }
-
-        .browser-left-navigation-list label {
-            margin-left: 44px;
-            height: 40px;
-            line-height: 40px;
-            color: white;
-        }
-
-        .browser-right { width: 100%; height: 100%; background-color: #f2f2f2; }
-
-        .browser-right-header {
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
-            height: 49px;
-            border-bottom: 1px solid #f6f6f6;
-            background-color: #fff;
-        }
-
-        .browser-right-header-item {
-            width: 96px;
-            height: 48px;
-        }
-
-        .browser-right-header-avatar {
-            margin-top: 2px;
-            margin-right: 10px;
-            width: 44px;
-            height: 44px;
-        }
-
-        .browser-right-main { width: 100%; height: calc(100% - 50px)}
-
-        .browser-right-main iframe {
-            width: calc(100% - 30px);
-            height: calc(100% - 30px);
-            margin: 15px;
-            border: 0px;
-            border-radius: 2px;
-            background-color: white;
+        span {
+            line-height: 50px;
         }
     </style>
 </head>
 <body>
 
-<div class="browser">
+<div id="app">
+    <el-container>
+        <el-header height="50px">
 
-    <div class="browser-left">
+            <el-row type="flex" class="row-bg" justify="space-between">
+                <el-col :span="6">
+                    <span style="margin-left: 20px">管理系统</span>
+                </el-col>
+                <el-col :span="6" style="text-align: right">
+                    <div>
+                        <el-dropdown style="">
+                            <i class="el-icon-setting" style="margin-right: 15px"></i>
+                            <el-dropdown-menu slot="dropdown">
+                                <el-dropdown-item>查看</el-dropdown-item>
+                                <el-dropdown-item>新增</el-dropdown-item>
+                                <el-dropdown-item>删除</el-dropdown-item>
+                            </el-dropdown-menu>
+                        </el-dropdown>
+                        <span>王小虎</span>
+                    </div>
+                </el-col>
+            </el-row>
 
-        <div class="browser-left-logo"> <label>教学管理</label> </div>
+        </el-header>
 
-        <ul class="browser-left-navigation">
+        <el-aside width="200px" style="height: calc(100% - 60px)">
+            <el-menu :default-openeds="['1']">
+                <el-submenu index="1">
+                    <template slot="title"><i class="el-icon-message"></i>导航一</template>
+                    <el-menu-item-group>
+                        <template slot="title">分组一</template>
+                        <el-menu-item index="1-1">选项1</el-menu-item>
+                        <el-menu-item index="1-2">选项2</el-menu-item>
+                    </el-menu-item-group>
+                    <el-menu-item-group title="分组2">
+                        <el-menu-item index="1-3">选项3</el-menu-item>
+                    </el-menu-item-group>
+                    <el-submenu index="1-4">
+                        <template slot="title">选项4</template>
+                        <el-menu-item index="1-4-1">选项4-1</el-menu-item>
+                    </el-submenu>
+                </el-submenu>
+                <el-submenu index="2">
+                    <template slot="title"><i class="el-icon-menu"></i>导航二</template>
+                    <el-menu-item-group>
+                        <template slot="title">分组一</template>
+                        <el-menu-item index="2-1">选项1</el-menu-item>
+                        <el-menu-item index="2-2">选项2</el-menu-item>
+                    </el-menu-item-group>
+                    <el-menu-item-group title="分组2">
+                        <el-menu-item index="2-3">选项3</el-menu-item>
+                    </el-menu-item-group>
+                    <el-submenu index="2-4">
+                        <template slot="title">选项4</template>
+                        <el-menu-item index="2-4-1">选项4-1</el-menu-item>
+                    </el-submenu>
+                </el-submenu>
+                <el-submenu index="3">
+                    <template slot="title"><i class="el-icon-setting"></i>导航三</template>
+                    <el-menu-item-group>
+                        <template slot="title">分组一</template>
+                        <el-menu-item index="3-1">选项1</el-menu-item>
+                        <el-menu-item index="3-2">选项2</el-menu-item>
+                    </el-menu-item-group>
+                    <el-menu-item-group title="分组2">
+                        <el-menu-item index="3-3">选项3</el-menu-item>
+                    </el-menu-item-group>
+                    <el-submenu index="3-4">
+                        <template slot="title">选项4</template>
+                        <el-menu-item index="3-4-1">选项4-1</el-menu-item>
+                    </el-submenu>
+                </el-submenu>
+            </el-menu>
+        </el-aside>
 
-        </ul>
-    </div>
+        <el-container>
 
-    <div class="browser-right">
 
-        <div class="browser-right-header">
-            <div class="browser-right-header-item"></div>
-            <img class="browser-right-header-avatar" src="/image/default-avatar.png">
-        </div>
-
-        <div class="browser-right-main">
-            <iframe id="web-container" src="/welcome" scrolling="no"></iframe>
-        </div>
-
-    </div>
-
+<#--            <el-main>-->
+<#--                <el-table :data="tableData">-->
+<#--                    <el-table-column prop="date" label="日期" width="140">-->
+<#--                    </el-table-column>-->
+<#--                    <el-table-column prop="name" label="姓名" width="120">-->
+<#--                    </el-table-column>-->
+<#--                    <el-table-column prop="address" label="地址">-->
+<#--                    </el-table-column>-->
+<#--                </el-table>-->
+<#--            </el-main>-->
+        </el-container>
+    </el-container>
 </div>
 </body>
 <script>
+    $(function () {
 
-    var selectSuperId = "";
-    var selectedId = "";
+        let viewModel = {
+            name : "about"
+        };
 
-    $(function(){
-        // getAvatar();
-        getNavigationData(0, function(name, catalogId, resourceId, length, url){
-            generateSection(name, catalogId, resourceId);
-        });
-    });
+        let app = new Vue({
+            el: '#app',
+            data: viewModel,
+            methods: {
+                addItem() {
 
-    function getAvatar() {
-        $("browser-right-header-avatar").attr('src', );
-    }
-    
-    function openNextLevel(obj) {
-
-        $(obj.id.replace("a", "#b")).empty();
-
-        getNavigationData(Number(obj.id.replace("a_", "")), function(name, catalogId, resourceId, length, url) {
-            generateItem(name, catalogId, resourceId, url);
-            $(obj.id.replace("a", "#b")).height(length * 40);
-            $(obj.id.replace("a", "#b")).show();
-        });
-
-
-    }
-
-    function getNavigationData(catalogId, callback) {
-        $.ajax({
-            type: 'POST',
-            contentType: "application/json; charset=UTF-8",
-            url: '/ajax/home/level',
-            data: JSON.stringify({
-                catalogId: catalogId
-            }),
-            success: function (data) {
-                let j = JSON.parse(data);
-                for (let i = 0; i < j.length; i++) {
-                    let t = j[i];
-                    callback(t.name, t.catalogId, t.resourceId, j.length, t.url);
+                },
+                login: function (event) {
+                    window.location.href = "home";
                 }
             }
         });
-    }
-
-    function openIframe(obj) {
-        if (selectedId.length > 0) {
-            $("#" + selectedId).css("background-color", "#191B21");
-        }
-        $("#" + obj.id).css("background-color", "#009688");
-        $("#web-container").attr("src",$(obj).attr('url'));
-        selectedId = obj.id;
-    }
-
-    function generateSection(name, catalogId, resourceId, url) {
-        let sectionHtml = "<li>" +
-            "<div id=\"a_" + resourceId + "\" class=\"browser-left-navigation-header\" onclick=\"openNextLevel(this)\">" +
-            "<img src=\"\">" +
-            "<label>" + name + "</label>" +
-            "</div>" +
-            "<dd id=\"b_" + resourceId + "\" class=\"browser-left-navigation-list\">"+
-            "</dd>"+
-            "</li>";
-        $(".browser-left-navigation").append(sectionHtml);
-    }
-
-    function generateItem(name, catalogId, resourceId, url) {
-        let itemHtml = "<dl id=\"bb_" + resourceId + "\" url= "+ url +  " onclick=\"openIframe(this)\">" +
-            "<div>" +
-            "<label>"+ name +"</label>" +
-            "</div>" +
-            "</dl>";
-        $("#b_" + catalogId).append(itemHtml);
-    }
+    });
 </script>
 </html>

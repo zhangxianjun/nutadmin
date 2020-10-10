@@ -32,17 +32,6 @@ public class LoginController {
 //        Cookie c = new Cookie("zxj", "MD5");
 //        response.addCookie(c);
 
-        double x = 1.0 / 10;
-        double y = 1 - 9.0 / 10;
-        // 观察x和y是否相等:
-        System.out.println(x);
-        System.out.println(y);
-        System.out.println(1.1-0.9);
-
-//        </styles.css>; rel=preload; as=style
-
-        response.setHeader("Link", "</css/bootstrap/bootstrap.min.css>; rel=preload; as=style");
-
         return "login";
     }
 

@@ -33,10 +33,10 @@
 
     <el-row>
         <el-col :span="2" :offset="10">
-            <el-button type="primary">登录</el-button>
+            <el-button type="primary" v-on:click="login">登录</el-button>
         </el-col>
         <el-col :span="2" style="text-align: right">
-            <el-button type="info" plain>忘记密码</el-button>
+            <el-button type="info" plain="true" v-on:click="forgot">忘记密码</el-button>
         </el-col>
     </el-row>
 </div>
@@ -57,6 +57,9 @@
             methods: {
                 addItem() {
 
+                },
+                login: function (event) {
+                    window.location.href = "home";
                 }
             }
         });

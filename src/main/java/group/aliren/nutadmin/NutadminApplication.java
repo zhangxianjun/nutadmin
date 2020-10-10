@@ -9,6 +9,8 @@ import java.beans.BeanInfo;
 import java.beans.IntrospectionException;
 import java.beans.Introspector;
 import java.beans.PropertyDescriptor;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -20,11 +22,36 @@ public class NutadminApplication {
 
     public static void main(String[] args) {
 
-        int[] tmp = {1, 5, 8, 3, 7, 9};
+//        int[] tmp = {1, 5, 8, 3, 7, 9};
+//
+//        int[] result = bubbleSort(tmp);
+//
+//        System.out.println(Arrays.toString(result));
 
-        int[] result = bubbleSort(tmp);
+//        double x = 1.0 / 10;
+//        double y = 1 - 0.9 / 10;
+//        // 观察x和y是否相等:
+//        System.out.println(x);
+//        System.out.println(y);
 
-        System.out.println(Arrays.toString(result));
+        double x = 2.7;
+        double y = 0.8;
+
+        BigDecimal bx = BigDecimal.valueOf(2.7);
+        BigDecimal by = BigDecimal.valueOf(0.8);
+
+        System.out.println(x+y);
+        System.out.println(bx.add(by));
+
+        System.out.println(x-y);
+        System.out.println(bx.subtract(by));
+
+        System.out.println(x*y);
+        System.out.println(bx.multiply(by));
+
+        System.out.println(x/y);
+        System.out.println(bx.divide(by, RoundingMode.CEILING));
+
 
         SpringApplication.run(NutadminApplication.class, args);
 
