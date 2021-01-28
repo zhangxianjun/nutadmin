@@ -2,15 +2,19 @@ package group.aliren.nutadmin;
 
 import group.aliren.nutadmin.experiment.JavabeanModel;
 import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import javax.sql.DataSource;
 import java.beans.BeanInfo;
 import java.beans.IntrospectionException;
 import java.beans.Introspector;
 import java.beans.PropertyDescriptor;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -18,7 +22,17 @@ import java.util.StringJoiner;
 
 @SpringBootApplication
 @MapperScan("group.aliren.nutadmin.mapper")
-public class NutadminApplication {
+public class NutadminApplication implements CommandLineRunner {
+
+    @Autowired
+    private DataSource dataSource;
+
+    @Override
+    public void run(String... args) throws Exception {
+        Connection c = dataSource.getConnection();
+
+        System.out.println("===" + dataSource.toString());
+    }
 
     public static void main(String[] args) {
 
@@ -34,23 +48,23 @@ public class NutadminApplication {
 //        System.out.println(x);
 //        System.out.println(y);
 
-        double x = 2.7;
-        double y = 0.8;
-
-        BigDecimal bx = BigDecimal.valueOf(2.7);
-        BigDecimal by = BigDecimal.valueOf(0.8);
-
-        System.out.println(x+y);
-        System.out.println(bx.add(by));
-
-        System.out.println(x-y);
-        System.out.println(bx.subtract(by));
-
-        System.out.println(x*y);
-        System.out.println(bx.multiply(by));
-
-        System.out.println(x/y);
-        System.out.println(bx.divide(by, RoundingMode.CEILING));
+//        double x = 2.7;
+//        double y = 0.8;
+//
+//        BigDecimal bx = BigDecimal.valueOf(2.7);
+//        BigDecimal by = BigDecimal.valueOf(0.8);
+//
+//        System.out.println(x+y);
+//        System.out.println(bx.add(by));
+//
+//        System.out.println(x-y);
+//        System.out.println(bx.subtract(by));
+//
+//        System.out.println(x*y);
+//        System.out.println(bx.multiply(by));
+//
+//        System.out.println(x/y);
+//        System.out.println(bx.divide(by, RoundingMode.CEILING));
 
 
         SpringApplication.run(NutadminApplication.class, args);
